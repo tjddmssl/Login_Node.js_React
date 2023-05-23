@@ -24,7 +24,7 @@ export default function Logout() {
           <Logo>Infrachip</Logo>
         </LogoWrapper>
         <Container>
-          <div>{name} 님이 로그인했습니다.</div>
+          <Name>{name} 님이 로그인했습니다.</Name>
           <Button onClick={logout}>Logout</Button>
         </Container>
       </ShadowedBox>
@@ -44,10 +44,12 @@ const Positioner = styled.div`
 const ShadowedBox = styled.div`
   width: 500px;
   box-shadow: 0 0 0 4px hsla(241, 54%, 88%, 0.65);
+  border-radius: 5px;
 `;
 
 // 로고
 const LogoWrapper = styled.div`
+  border-radius: 5px 5px 0 0px;
   background-color: #96a5ff;
   height: 5rem;
   display: flex;
@@ -80,7 +82,14 @@ const Button = styled.button`
   font-weight: 700;
   cursor: pointer;
   background-color: #96a5ff;
-  &:hover {
-    background-color: hsla(231, 100%, 79%, 0.7);
-  }
+`;
+
+const Name = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1.3rem;
+  color: #646970;
 `;

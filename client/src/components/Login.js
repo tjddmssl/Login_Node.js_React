@@ -70,10 +70,12 @@ const Positioner = styled.div`
 const ShadowedBox = styled.div`
   width: 500px;
   box-shadow: 0 0 0 4px hsla(241, 54%, 88%, 0.65);
+  border-radius: 5px;
 `;
 
 // 로고
 const LogoWrapper = styled.div`
+  border-radius: 5px 5px 0 0px;
   background-color: #96a5ff;
   height: 5rem;
   display: flex;
@@ -104,6 +106,12 @@ const Input = styled.input`
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   margin: 1rem;
+  color: #646970;
+  &:focus {
+    outline: none;
+    border-color: #96a5ff;
+    box-shadow: 0 0 0 4px hsla(241, 54%, 88%, 0.65);
+  }
 `;
 
 const Button = styled.button`
@@ -116,7 +124,4 @@ const Button = styled.button`
   font-weight: 700;
   cursor: pointer;
   background-color: #96a5ff;
-  &:hover {
-    background-color: hsla(231, 100%, 79%, 0.7);
-  }
 `;
