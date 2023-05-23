@@ -1,4 +1,5 @@
 import React from "react";
+//스타일드컴포너트를 사용해서 css사용했습니다.
 import styled from "styled-components";
 
 export default function Header() {
@@ -6,7 +7,7 @@ export default function Header() {
     <>
       <HeaderContainer>
         <img className="logo_img" alt="logo" src="Image/woman.png"></img>
-        <Name>Lee Sung Eun</Name>
+        <Name>이성은_Login Project</Name>
       </HeaderContainer>
     </>
   );
