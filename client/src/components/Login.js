@@ -25,6 +25,7 @@ export default function Login() {
 
   //LogIn버튼을 누르면 호출하는 함수입니다.
   const login = () => {
+    //서버와 통신하기 위해 axios를 사용했습니다.
     axios({
       //서버의 api주소는 http://localhost:8122/login이고
       url: "http://localhost:8122/login",

@@ -7,18 +7,30 @@ import styled from "styled-components";
 import { getLocalStorage, removeLocalStorage } from "./localStorage";
 
 export default function Logout() {
+  //LogOut버튼을 누르면 호출하는 함수입니다.
   const logout = () => {
+    //서버와 통신하기 위해 axios를 사용했습니다.
     axios({
+      //서버의 api주소는 http://localhost:8122/logout이고
       url: "http://localhost:8122/logout",
+      //서버에게 HTTP method  "POST"로 보냅니다.
       method: "POST",
+      // withCredentials: true는  CORS 요청에 쿠키값을 넣어준 부분입니다.
       withCredentials: true,
-    }).then((result) => {
-      if (result.status === 200) {
-        removeLocalStorage("name");
-        window.location.replace("/");
-      }
-    });
+    })
+      //axios로 서버에게 post를 하고
+      .then((result) => {
+        //서버에서 넘겨주는 상태코드가 200번이라면 (서버에게 요청이 성공함)
+        if (result.status === 200) {
+          //localstorage에서 "name"이라는 키에 저장되어 있는 username를 삭제합니다.
+          removeLocalStorage("name");
+          //다시 처음 화면으로 갑니다
+          window.location.replace("/");
+        }
+      });
   };
+
+  //화면에 누가 로그인했는지 띄울려고 localstorage에서 "name"이라는 키에 저장되어 있는 username를 가져옵니다
   const name = getLocalStorage("name");
 
   return (
@@ -28,8 +40,9 @@ export default function Logout() {
           <Logo>Infrachip</Logo>
         </LogoWrapper>
         <Container>
+          {/* 위에 name값이 화면에 나오도록 구현했습니다. */}
           <Name>{name} 님이 로그인했습니다.</Name>
-          <Button onClick={logout}>Logout</Button>
+          <Button onClick={logout}>LogOut</Button>
         </Container>
       </ShadowedBox>
     </Positioner>
