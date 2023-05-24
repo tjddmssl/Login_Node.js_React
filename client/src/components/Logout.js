@@ -7,6 +7,11 @@ import styled from "styled-components";
 import { getLocalStorage, removeLocalStorage } from "./localStorage";
 
 export default function Logout() {
+  /**LogOut버튼을 누르면 서버에게 post요청이 가고,
+   * 서버에서는 클라이언트의 쿠키에 저장되어 있는 accessToken과 refreshToken를 비웁니다.
+   * 클라이언트에서는 localstorage에서 username를 삭제합니다.
+   * 즉 더이상 로그인상태가 유지되지 않습니다.*/
+
   //LogOut버튼을 누르면 호출하는 함수입니다.
   const logout = () => {
     //서버와 통신하기 위해 axios를 사용했습니다.
@@ -24,7 +29,7 @@ export default function Logout() {
         if (result.status === 200) {
           //localstorage에서 "name"이라는 키에 저장되어 있는 username를 삭제합니다.
           removeLocalStorage("name");
-          //다시 처음 화면으로 갑니다
+          //다시 처음 로그인 화면으로 갑니다
           window.location.replace("/");
         }
       });
@@ -42,6 +47,7 @@ export default function Logout() {
         <Container>
           {/* 위에 name값이 화면에 나오도록 구현했습니다. */}
           <Name>{name} 님이 로그인했습니다.</Name>
+          {/*LogOut버튼을 누르면 온클릭 이벤트가 발생해서 위에 선언해놓은 logout함수가 실행됩니다. */}
           <Button onClick={logout}>LogOut</Button>
         </Container>
       </ShadowedBox>

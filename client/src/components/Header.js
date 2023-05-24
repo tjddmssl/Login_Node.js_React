@@ -1,3 +1,4 @@
+//전체 레이아웃이 되는 헤더 컴포넌트입니다.
 import React from "react";
 //스타일드컴포너트를 사용해서 css사용했습니다.
 import styled from "styled-components";

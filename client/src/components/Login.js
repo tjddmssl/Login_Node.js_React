@@ -23,6 +23,12 @@ export default function Login() {
     setPassword(e.target.value);
   };
 
+  /**지금은 회원가입이 서버랑 클라이언트에 구현이 안되어있기 때문에, 서버측의 Database.js안에 있는 아이디와 비밀번호를 사용합니다.
+   * 즉 비밀번호와 아이디가 틀리면 로그인이 되지 않습니다.
+   * Database.js에 있는 아이디와 그에 대한 올바른 비밀번호를 입력해서 로그인을 하면,
+   * 서버에서 aceesstoken과 refreshtoken을 만들어서,
+   * 클라이언트에게 쿠키값으로 보내서 클라이언트의 쿠키에  aceesstoken과 refreshtoken이 저장이 됩니다.*/
+
   //LogIn버튼을 누르면 호출하는 함수입니다.
   const login = () => {
     //서버와 통신하기 위해 axios를 사용했습니다.
@@ -41,11 +47,11 @@ export default function Login() {
     })
       //axios로 서버에게 post를 하고
       .then((result) => {
-        //서버에서 넘겨주는 상태코드가 200번이라면 (서버에게 요청이 성공함)
+        //서버에서 넘겨주는 상태코드가 200번이라면(서버에게 요청이 성공함), 아래 코드가 실행됩니다.
         if (result.status === 200) {
           // 서버에서 넘겨주는 데이터를 result로 받아서 result안에 result.data의 username를 localstorage에 저장합니다.
           setLocalStorage("name", result.data);
-          // 그다음 로그아웃 컴포넌트로 이동합니다.
+          // 그다음 로그아웃버튼이 있는 페이지로 이동합니다.
           window.location.replace("/logout");
         }
       });
@@ -70,6 +76,7 @@ export default function Login() {
             value={password}
             onChange={changePwdHandler}
           />
+          {/*LogIn버튼을 누르면 온클릭 이벤트가 발생해서 위에 선언해놓은 login함수가 실행됩니다. */}
           <Button onClick={login}>LogIn</Button>
         </InputContainer>
       </ShadowedBox>
