@@ -18,9 +18,8 @@ const cors = require("cors");
 const { login, logout } = require("./controller");
 
 /**여기서 app은 어플리케이션이라고 하고 즉 express의 인스턴스입니다.
- * app 객체는 express() 메소드 호출로 생성되는 익스프레스 서버 객체를 의미합니다.
+ * app 객체는 express() 메소드 호출로 생성되는 express 서버 객체를 의미합니다.
  * 이 서버객체가 갖는 메소드로 서버의 일을 처리합니다.   */
-
 //express app 객체를 생성
 const app = express();
 
@@ -36,7 +35,7 @@ app.use(cookieParser());
 //express에서 cors를 활성화
 app.use(
   cors({
-    // 접근을 허용하지 말고 아래처럼 특정 도메인
+    // 접근을 허용하는 특정 도메인
     origin: "http://localhost:3000",
     // HTTP methods는 GET, POST를 허용
     methods: ["GET", "POST"],
