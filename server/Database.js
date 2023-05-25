@@ -4,12 +4,12 @@
 module.exports = [
   {
     username: "이성은",
-    email: "aaa",
+    email: "danbi6485@gmail.com",
     password: "123",
   },
   {
-    username: "이성은2",
-    email: "bbb",
+    username: "user",
+    email: "user@gmail.com",
     password: "123",
   },
 ];

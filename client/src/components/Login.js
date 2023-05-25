@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-//스타일드컴포너트를 사용해서 css사용했습니다.
+//스타일드컴포넌트를 사용해서 css사용했습니다.
 import styled from "styled-components";
 //서버와 axios를 사용해서 통신했습니다.
 import axios from "axios";
-//localStorage.setItem메소드를 불러옴
+//localStorage.js에서 localStorage.setItem 불러옴
 import { setLocalStorage } from "./localStorage";
 
 export default function Login() {
@@ -27,7 +27,7 @@ export default function Login() {
    * 즉 비밀번호와 아이디가 틀리면 로그인이 되지 않습니다.
    * Database.js에 있는 아이디와 그에 대한 올바른 비밀번호를 입력해서 로그인을 하면,
    * 서버에서 aceesstoken과 refreshtoken을 만들어서,
-   * 클라이언트에게 쿠키값으로 보내서 클라이언트의 쿠키에  aceesstoken과 refreshtoken이 저장이 됩니다.*/
+   * 클라이언트에게 쿠키값으로 보내서 클라이언트의 쿠키에  aceesstoken과 refreshtoken이 저장됩니다.*/
 
   //LogIn버튼을 누르면 호출하는 함수입니다.
   const login = () => {
@@ -45,13 +45,13 @@ export default function Login() {
         password: password,
       },
     })
-      //axios로 서버에게 post를 하고
+      //axios로 서버에게 post를 한 후,
       .then((result) => {
         //서버에서 넘겨주는 상태코드가 200번이라면(서버에게 요청이 성공함), 아래 코드가 실행됩니다.
         if (result.status === 200) {
-          // 서버에서 넘겨주는 데이터를 result로 받아서 result안에 result.data의 username를 localstorage에 저장합니다.
+          /*서버에서 넘겨주는 데이터를 result로 받아서 result안에 result.data의 username를 "name"이라는 키값으로 localstorage에 저장합니다.*/
           setLocalStorage("name", result.data);
-          // 그다음 로그아웃버튼이 있는 페이지로 이동합니다.
+          // 그 다음 로그아웃버튼이 있는 페이지로 이동합니다.
           window.location.replace("/logout");
         }
       })
@@ -92,6 +92,8 @@ export default function Login() {
     </Positioner>
   );
 }
+
+//여기서부터는 스타일드컴포넌트로 css를 작성한 코드 입니다.
 
 // 화면의 중앙에 위치
 const Positioner = styled.div`

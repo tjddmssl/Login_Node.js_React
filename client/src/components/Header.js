@@ -1,8 +1,8 @@
 //전체 레이아웃이 되는 헤더 컴포넌트입니다.
 import React from "react";
-//스타일드컴포너트를 사용해서 css사용했습니다.
+//스타일드컴포넌트를 사용해서 css사용했습니다.
 import styled from "styled-components";
-//localStorage.getItem를 불러옴
+//localStorage.js에 localStorage.getItem를 불러옴
 import { getLocalStorage } from "./localStorage";
 
 export default function Header() {
@@ -10,7 +10,7 @@ export default function Header() {
   const name = getLocalStorage("name");
   return (
     <>
-      {/* 로그인을 성공해서 위에 선언된 변수 name값이 있다면, 헤더에 name_Login Project가 렌더링이 되고,
+      {/* 로그인을 성공해서 위에 선언된 변수 name값이 있다면, 헤더에 {name}_Login Project가 렌더링이 되고,
            로그 아웃을 하면 헤더에 Login Project가 렌더링 됩니다. */}
       {name ? (
         <HeaderContainer>
@@ -26,6 +26,8 @@ export default function Header() {
     </>
   );
 }
+
+//여기서부터는 스타일드컴포넌트로 css를 작성한 코드 입니다.
 const HeaderContainer = styled.header`
   position: fixed;
   display: flex;

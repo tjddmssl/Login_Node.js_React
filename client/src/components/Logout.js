@@ -1,16 +1,16 @@
 import React from "react";
 //서버와 axios를 사용해서 통신했습니다.
 import axios from "axios";
-//스타일드컴포너트를 사용해서 css사용했습니다.
+//스타일드컴포넌트를 사용해서 css사용했습니다.
 import styled from "styled-components";
-//localStorage.getItem와  localStorage.removeItem 를 불러옴
+//localStorage.js에서 localStorage.getItem과  localStorage.removeItem 를 불러옴
 import { getLocalStorage, removeLocalStorage } from "./localStorage";
 
 export default function Logout() {
   /**LogOut버튼을 누르면 서버에게 post요청이 가고,
    * 서버에서는 클라이언트의 쿠키에 저장되어 있는 accessToken과 refreshToken를 비웁니다.
    * 클라이언트에서는 localstorage에서 username를 삭제합니다.
-   * 즉 더이상 로그인상태가 유지되지 않습니다.*/
+   * 즉 더 이상 로그인 상태가 유지되지 않습니다.*/
 
   //LogOut버튼을 누르면 호출하는 함수입니다.
   const logout = () => {
@@ -54,6 +54,8 @@ export default function Logout() {
     </Positioner>
   );
 }
+
+//여기서부터는 스타일드컴포넌트로 css를 작성한 코드 입니다.
 
 // 화면의 중앙에 위치
 const Positioner = styled.div`

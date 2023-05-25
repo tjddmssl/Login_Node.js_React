@@ -22,7 +22,7 @@ const login = (req, res) => {
   } else {
     //만약 Database에 저장되어 있는 유저정보들 중 email값과 클라이언트가 보낸 email값이 동일한게 있다면,
     try {
-      // accessToken 발급해서 accessToken변수값으로 할당합니다.
+      // accessToken을 발급해서 accessToken변수값으로 할당합니다.
       //jsonwebtoken의 내장함수인 sign함수를 사용하여, jwt.sign(어떤 유저 정보를 담을지, 시크릿 키, 옵션) 작성했습니다.
       const accessToken = jwt.sign(
         //accessToken에 담을 유저정보
@@ -39,7 +39,7 @@ const login = (req, res) => {
         }
       );
 
-      // refreshToken 발급해서 refreshToken변수값으로 할당합니다.
+      // refreshToken을 발급해서 refreshToken변수값으로 할당합니다.
       //jsonwebtoken의 내장함수인 sign함수를 사용하여, jwt.sign(어떤 유저 정보를 담을지, 시크릿 키, 옵션) 작성했습니다.
       const refreshToken = jwt.sign(
         //refreshToken에 담을 유저정보
