@@ -2,7 +2,7 @@
 ### 테스트 전에,
 - **client파일과 server파일을 각각 `npm install`해주세요.**
 - **client파일과 server파일을 각각 `npm run start`해주세요.**
-- **각각 코드 해셕에 대한 주석은 그 해당 코드 바로 위에 작성하였습니다.**
+- **각각 코드 해석에 대한 주석은 그 해당 코드 바로 위에 작성하였습니다.**
 ### 로그인 아이디, 비밀번호
 - 🐥**DB에 저장 된 email와 password로 로그인 테스트 진행해주세요** 🐥
   - email: danbi6485@gmail.com , password: 123
