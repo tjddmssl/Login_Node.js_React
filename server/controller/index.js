@@ -10,7 +10,7 @@ const login = (req, res) => {
   //클라이언트가 보낸 HTTP request body값의 email를 객체구조분해 할당으로 가져옴
   const { email } = req.body;
 
-  //Database에 저장되어 있는 유저 정보들 중 클라이언트가 보낸 email값과 Database의 email값이 같은 유저정보를 userInfo변수값에 할당합니다.
+  //Database에 저장되어 있는 유저 정보들 중 클라이언트가 보낸 email값과 Database의 email값이 같은 유저정보를 filter해서 userInfo변수값에 할당합니다.
   const userInfo = userDatabase.filter((item) => {
     return item.email === email;
   })[0];
@@ -22,29 +22,37 @@ const login = (req, res) => {
   } else {
     //만약 Database에 저장되어 있는 유저정보들 중 email값과 클라이언트가 보낸 email값이 동일한게 있다면,
     try {
-      // access Token 발급
+      // accessToken 발급해서 accessToken변수값으로 할당합니다.
+      //jsonwebtoken의 내장함수인 sign함수를 사용하여, jwt.sign(어떤 유저 정보를 담을지, 시크릿 키, 옵션) 작성했습니다.
       const accessToken = jwt.sign(
+        //accessToken에 담을 유저정보
         {
           username: userInfo.username,
           email: userInfo.email,
         },
+        // .env파일에 있는 accessToken 시크릿 키를 가져옵니다.
         process.env.ACCESS_SECRET,
+        // 옵션으로 accessToken의 유효기간, 발행자를 작성했습니다.
         {
           expiresIn: "24h",
-          issuer: "About Tech",
+          issuer: "LeeSungEun",
         }
       );
 
-      // refresh Token 발급
+      // refreshToken 발급해서 refreshToken변수값으로 할당합니다.
+      //jsonwebtoken의 내장함수인 sign함수를 사용하여, jwt.sign(어떤 유저 정보를 담을지, 시크릿 키, 옵션) 작성했습니다.
       const refreshToken = jwt.sign(
+        //refreshToken에 담을 유저정보
         {
           username: userInfo.username,
           email: userInfo.email,
         },
+        // .env파일에 있는 refreshToken 시크릿 키를 가져옵니다.
         process.env.REFRECH_SECRET,
+        // 옵션으로 refreshToken의 유효기간, 발행자를 작성했습니다.
         {
           expiresIn: "24h",
-          issuer: "About Tech",
+          issuer: "LeeSungEun",
         }
       );
 
@@ -79,7 +87,7 @@ const login = (req, res) => {
 };
 
 //클라이언트로부터 로그아웃 요청의(HTTP methods는 POST, 경로는 "/logout") 콜백함수 logout입니다.
-const logout = (res) => {
+const logout = (req, res) => {
   //클라이언트로부터 로그아웃 요청시 응답으로
   try {
     //"accessToken"키값으로 빈값이 담긴 쿠기를 쿠키를 생성해서 클라이언트에게 응답으로 보냅니다.
@@ -94,7 +102,7 @@ const logout = (res) => {
   }
 };
 
-//각각의 login함수와 logout함수를 모듈화 해서 내보내서 다른 파일에서 두 함수를 콜백함수로 사용합니다.
+//각각의 login함수와 logout함수를 모듈화해서 내보내서, 다른 파일에서 두 함수를 콜백함수로 사용합니다.
 module.exports = {
   login,
   logout,

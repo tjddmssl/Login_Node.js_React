@@ -26,20 +26,22 @@ const app = express();
 //현재 디렉토리의 .env파일을 자동으로 인식하여 환경변수를 세팅
 dotenv.config();
 
+// 여기서부터 끝 부분까지는 기본 설정을 위해 작성한 코드입니다.
+
 // JSON 형태의 요청 body를 파싱하기 위해 express.json() 미들웨어를 사용
 app.use(express.json());
 
 //express에서 cookie-parser를 활성화
 app.use(cookieParser());
 
-//express에서 cors를 활성화
+//클라이언트와 서버간 origin이 다른 상황에서 통신하기 위해 cors를 활성화
 app.use(
   cors({
     // 접근을 허용하는 특정 도메인
     origin: "http://localhost:3000",
     // HTTP methods는 GET, POST를 허용
     methods: ["GET", "POST"],
-    // 응답 헤더에 Access-Control-Allow-Credentials 추가
+    // 쿠키를 사용할 것이기 때문에, 응답 헤더에 Access-Control-Allow-Credentials 추가
     credentials: true,
   })
 );
