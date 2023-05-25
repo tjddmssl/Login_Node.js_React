@@ -35,7 +35,7 @@ export default function Logout() {
       });
   };
 
-  //화면에 누가 로그인했는지 띄울려고 localstorage에서 "name"이라는 키에 저장되어 있는 username를 가져옵니다
+  //화면에 누가 로그인했는지 띄울려고 localstorage에서 "name"이라는 키에 저장되어 있는 username를 가져와서 name이라는 변수에 할당합니다.
   const name = getLocalStorage("name");
 
   return (
@@ -94,13 +94,16 @@ const Container = styled.div`
 `;
 
 const Button = styled.button`
+  display: flex;
+  justify-content: center;
   color: white;
   border: none;
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  padding: 0.5rem;
+  align-items: center;
+  height: 3rem;
+  font-size: 1.3rem;
+  margin: 1rem;
   border-radius: 7px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   background-color: #96a5ff;
 `;
@@ -111,6 +114,6 @@ const Name = styled.div`
   justify-content: center;
   font-size: 1.4rem;
   font-weight: 500;
-  margin-bottom: 1.3rem;
+  margin: 1.3rem;
   color: #646970;
 `;

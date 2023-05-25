@@ -54,6 +54,15 @@ export default function Login() {
           // 그다음 로그아웃버튼이 있는 페이지로 이동합니다.
           window.location.replace("/logout");
         }
+      })
+      /**axios로 서버에게 post를 하는데 실패하여 서버에서 상태를 403를 보내주면,
+       * DB(Database.js)에 저장되어 있지 않은 아이디와 비밀번호입니다.
+       * 따라서 서버에서 상태 403를 보내주면 "ID 또는 비밀번호가 일치하지 않습니다."의 알람이 뜨도록 했습니다.
+       */
+      .catch((err) => {
+        if (err.response.status === 403) {
+          alert("ID 또는 비밀번호가 일치하지 않습니다.");
+        }
       });
   };
 
@@ -127,8 +136,7 @@ const Input = styled.input`
   border-radius: 5px;
   line-height: 2.5rem;
   font-size: 1.2rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.8rem;
   margin: 1rem;
   color: #646970;
   &:focus {
@@ -139,13 +147,16 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
+  display: flex;
+  justify-content: center;
   color: white;
   border: none;
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  padding: 0.5rem;
+  align-items: center;
+  height: 3rem;
+  font-size: 1.3rem;
+  margin: 1rem;
   border-radius: 7px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   background-color: #96a5ff;
 `;

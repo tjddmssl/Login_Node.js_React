@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 import Layout from "./components/Layout";
+//localStorage.getItem를 불러옴
 import { getLocalStorage } from "./components/localStorage";
 function App() {
   /** 새로고침해서 로그인 유지를 위해 토큰을 사용할까 했지만, 토큰을 서버에서 클라이언트의 쿠키에 저장하게 보내주고, 
@@ -14,7 +15,6 @@ function App() {
    */
 
   const name = getLocalStorage("name");
-  console.log(name);
   return (
     <>
       {/*리액트 라우터 설정을해서 각 페이지에 url를 만들고, 위에 헤더 부분은 레이아웃으로 계속 있었으면 해서 Layout컴포넌트는 전체적으로 
