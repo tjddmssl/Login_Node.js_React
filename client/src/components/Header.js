@@ -6,18 +6,16 @@ import styled from "styled-components";
 import { getLocalStorage } from "./localStorage";
 
 export default function Header() {
-  //헤더 부분에 조건부 렌더링을 위해 localstorage에서 "name"이라는 키에 저장되어 있는 username를 가져옵니다
+  //헤더 부분에 조건부 렌더링을 위해 localstorage에서 "name"이라는 키에 저장되어 있는 username를 name 이라는 변수값으로 할당합니다.
   const name = getLocalStorage("name");
   return (
     <>
-      {/* 로그인을 한 후에는 localstorage에  "name"이라는 키에 username이 있고, 
-  이값을 name으로 가져와서 
-  로그인을 하면 헤더에 이성은_Login Project가 렌더링이 되고,
-  로그 아웃을 하면 헤더에 Login Project가 렌더링 됩니다. */}
+      {/* 로그인을 성공해서 위에 선언된 변수 name값이 있다면, 헤더에 name_Login Project가 렌더링이 되고,
+           로그 아웃을 하면 헤더에 Login Project가 렌더링 됩니다. */}
       {name ? (
         <HeaderContainer>
           <img className="logo_img" alt="logo" src="Image/woman.png"></img>
-          <Name>이성은_Login Project</Name>
+          <Name>{name}_Login Project</Name>
         </HeaderContainer>
       ) : (
         <HeaderContainer>

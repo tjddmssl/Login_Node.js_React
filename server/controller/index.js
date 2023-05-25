@@ -1,9 +1,15 @@
+//Database.js의 모듈(유저정보)을 불러와서 userDatabase 변수값으로 할당
 const userDatabase = require("../Database");
+
+//jsonwebtoken모듈을 불러와서 jwt 변수값으로 할당
 const jwt = require("jsonwebtoken");
 
-const login = (req, res, next) => {
-  const { email, password } = req.body;
+//클라이언트로부터 로그인 요청의(HTTP methods는 POST, 경로는 "/login") 콜백함수 login입니다.
+const login = (req, res) => {
+  //
+  const { email } = req.body;
 
+  //Database에 저장되어 있는 유저 정보들 중
   const userInfo = userDatabase.filter((item) => {
     return item.email === email;
   })[0];
@@ -38,7 +44,11 @@ const login = (req, res, next) => {
         }
       );
 
-      // token 전송
+      /**res.cookie(키, 값, 옵션) 형식으로 쿠키 생성합니다.
+       * secure 옵션은 HTTPS 프로토콜에서만 쿠키 전송 여부 결정,
+       * httpOnly 옵션은 스크립트의 쿠키 접근 가능 여부 결정하는 옵션으로 true면 접근 불가능, 기본값은 false입니다.
+       */
+      //
       res.cookie("accessToken", accessToken, {
         secure: false,
         httpOnly: true,
